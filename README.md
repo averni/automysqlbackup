@@ -8,16 +8,14 @@ It uses the latest mysql-client package available (mariadb 10.x) assuming any my
 
 ## Build args
 
-- UID
-- GID
-- TIMEZONE
+- UID (default 1001)
+- GID (default 1001)
+- TIMEZONE (default Europe/Rome)
+- GOCROND_VERSION (default 20.7.0)
 ## Environment variables
 
 - CONFIG_FILE
 - BACKUP_DIR
-- ROTATION_DAILY
-- ROTATION_WEEKLY
-- ROTATION_MONTHLY
 - DUMP_PORT
 - DB_HOST
 - DB_USER
@@ -29,8 +27,10 @@ It uses the latest mysql-client package available (mariadb 10.x) assuming any my
 - DUMP_LATEST
 - DUMP_LATEST_CLEAN_FILENAMES
 - SINGLE_TRANSACTION
+- ROTATION_DAILY
+- ROTATION_WEEKLY
+- ROTATION_MONTHLY
 - DRY_RUN
-- GOCROND_VERSION
 - RUN_ONCE
 
 ## Example
@@ -41,11 +41,8 @@ version: "3.8"
 services:
 
   automysqlbackup:
-    image: ghcr.io/averni/automysqlbackup:latest
+    image: averni/automysqlbackup:latest
     restart: unless-stopped
-    labels:
-      - app.name=test
-      - app.namespace=test
     volumes:
       - /host/backup/path:/backup:rw
       - /host/config/mysql_root_password:/run/secrets/mysql_root_password:ro
