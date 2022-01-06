@@ -49,8 +49,6 @@ RUN chmod +x /usr/local/bin/automysqlbackup /usr/local/bin/start.sh \
     && chown ${UID}:${GID} /backup \
     && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo ${TIMEZONE} > /etc/timezone
-    
-
 
 VOLUME /backup
 
