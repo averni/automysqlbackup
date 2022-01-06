@@ -11,6 +11,7 @@ LABEL org.label-schema.name="automysqlbackup" \
 ARG UID=1001
 ARG GID=1001
 ARG TIMEZONE=Europe/Rome
+ARG GOCROND_VERSION=20.7.0
 
 ENV CONFIG_FILE=/etc/automysqlbackup/automysqlbackup.conf
 ENV BACKUP_DIR=/backup
@@ -29,7 +30,6 @@ ENV DUMP_LATEST=
 ENV DUMP_LATEST_CLEAN_FILENAMES=
 ENV SINGLE_TRANSACTION=yes
 ENV DRY_RUN=
-ENV GOCROND_VERSION=20.7.0
 ENV RUN_ONCE=
 
 RUN apk add --no-cache mysql-client gzip tzdata bash \
