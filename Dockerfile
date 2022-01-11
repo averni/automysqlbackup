@@ -34,7 +34,7 @@ ENV RUN_ONCE=
 
 RUN apk add --no-cache mysql-client gzip tzdata bash \
     && addgroup -S -gid --gid $GID automysqlbackup \
-    && adduser --uid $UID -S automysqlbackup automysqlbackup \
+    && adduser --uid $UID -S -G automysqlbackup automysqlbackup \
     && wget -O /usr/local/bin/go-crond https://github.com/webdevops/go-crond/releases/download/$GOCROND_VERSION/go-crond-64-linux \
     && chmod +x /usr/local/bin/go-crond
 
